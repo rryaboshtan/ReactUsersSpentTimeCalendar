@@ -6,7 +6,6 @@ function mapDaysToTd(days) {
    
    return days.map((day, index) => <td key={index}>{spentMinutes(day.Start, day.End)}</td>);
 }
-//   return arr.join(' ');
 
 function Table() {
    return (
@@ -22,9 +21,9 @@ function Table() {
                </tr>
             </thead>
             <tbody>
-               {users.map((user, index) => {
+               {users.map(user => {
                   return (
-                     <tr key = {index}>
+                     <tr key={user.id}>
                         <td>{user.Fullname}</td>
 
                         {mapDaysToTd(user.Days)}
