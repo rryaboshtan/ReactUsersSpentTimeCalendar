@@ -1,9 +1,9 @@
 * {
   font-family: sans-serif;
-  /* Change your font family */
 }
 
 .content-table {
+  width: 90%;
   border-collapse: collapse;
   margin: 0 auto;
   font-size: 0.9em;
