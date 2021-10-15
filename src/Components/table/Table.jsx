@@ -3,7 +3,7 @@ import React from 'react'
 function Table() {
     return (
        <div>
-          <table>
+          <table className = 'content-table'>
              <thead>
                 <tr>
                    <th>user</th>
