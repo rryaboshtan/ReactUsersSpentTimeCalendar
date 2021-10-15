@@ -22,9 +22,9 @@ function Table() {
                </tr>
             </thead>
             <tbody>
-               {users.map(user => {
+               {users.map((user, index) => {
                   return (
-                     <tr>
+                     <tr key = {index}>
                         <td>{user.Fullname}</td>
 
                         {mapDaysToTd(user.Days)}
