@@ -14,7 +14,8 @@
      git clone https://github.com/rryaboshtan/ReactUsersSpentTimeCalendar.git
 
      And input in the command line
-      npm i            
+        cd ReactUsersSpentTimeCalendar/
+        npm i            
 
     Then type in the VSCode or other command line 
      npm start
