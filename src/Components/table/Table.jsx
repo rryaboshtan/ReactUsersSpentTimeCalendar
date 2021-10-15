@@ -5,7 +5,7 @@ import users from './data.json';
 function mapDaysToTd(days) {
    //    let prefix = '';
    let dayNumber = null;
-   let lastDayNumber = 1;
+   let lastDayNumber = 0;
 
    //   return days.map((day, index) => <td key={index}>{day.Date}</td>);
    //    return days.map((day, index) => <td key={index}>{spentMinutes(day.Start, day.End)}</td>);
@@ -38,6 +38,14 @@ function mapDaysToTd(days) {
    });
 }
 
+function renderLastDay(days) {
+   const lastDay = Number(days[days.length - 1].Date.split('-')[2]);
+    
+    if (lastDay !== 31) {
+        return <td>0</td>
+    }
+}
+
 function Table() {
    return (
       <div>
@@ -57,7 +65,8 @@ function Table() {
                      <tr key={user.id}>
                         <td>{user.Fullname}</td>
 
-                        {mapDaysToTd(user.Days)}
+                          {mapDaysToTd(user.Days)}
+                          {renderLastDay(user.Days)}
                      </tr>
                   );
                })}
