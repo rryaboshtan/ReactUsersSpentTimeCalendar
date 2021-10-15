@@ -2,17 +2,17 @@ import React from 'react';
 import users from './data.json';
 import spentMinutes from '../../helpers/helper';
 
-function mapDaysToTd(days, allMinutes) {
+function mapDaysToTd(days, allObj) {
    let dayNumber = null;
    let lastDayNumber = 0;
-   allMinutes = 0;
+   allObj.allMinutes = 0;
 
    return days.map((day, index) => {
       dayNumber = Number(day.Date.split('-')[2]);
+      allObj.allMinutes += spentMinutes(day.Start, day.End);
 
       if (dayNumber - lastDayNumber === 2) {
          lastDayNumber = dayNumber;
-         allMinutes += spentMinutes(day.Start, day.End);
 
          return (
             <>
@@ -46,10 +46,10 @@ function renderLastDay(days) {
 }
 
 function Table() {
-    // let allMinutes = ull;
-    let allObj = {
-        allMinutes: null,
-    }
+   // let allMinutes = ull;
+   let allObj = {
+      allMinutes: null,
+   };
    return (
       <div>
          <table className='content-table'>
@@ -68,10 +68,10 @@ function Table() {
                      <tr key={user.id}>
                         <td>{user.Fullname}</td>
 
-                          {mapDaysToTd(user.Days, allObj)}
-                          {console.log('allMinutes', allObj.allMinutes)}
-                          {renderLastDay(user.Days)}
-                          <td>{allObj.allMinutes}</td>
+                        {mapDaysToTd(user.Days, allObj)}
+                        {console.log('allMinutes', allObj.allMinutes)}
+                        {renderLastDay(user.Days)}
+                        <td>{allObj.allMinutes}</td>
                      </tr>
                   );
                })}
