@@ -7,43 +7,40 @@ import spentMinutes from '../../helpers/helper';
 function mapDaysToTd(days, allObj) {
    let dayNumber = null;
    let lastDayNumber = 0;
+   let zeroTds = [];
    allObj.allMinutes = 0;
 
-   return days.map((day, index) => {
+   return days.map(day => {
       dayNumber = Number(day.Date.split('-')[2]);
       allObj.allMinutes += spentMinutes(day.Start, day.End);
+      zeroTds = [];
 
-      if (dayNumber - lastDayNumber === 2) {
-         lastDayNumber = dayNumber;
-
-         return (
-            <>
-               <td key={uuidv4()}>0</td>
-               <td key={uuidv4()}> {spentMinutes(day.Start, day.End)}</td>
-            </>
-         );
-      } else if (dayNumber - lastDayNumber === 3) {
-         lastDayNumber = dayNumber;
-
-         return (
-            <>
-               <td key={uuidv4()}>0</td>
-               <td key={uuidv4()}>0</td>
-               <td key={uuidv4()}> {spentMinutes(day.Start, day.End)}</td>
-            </>
-         );
-      } else {
-         lastDayNumber = dayNumber;
-         return <td key={uuidv4()}> {spentMinutes(day.Start, day.End)}</td>;
+      if (dayNumber - lastDayNumber >= 2) {
+         for (let i = 0; i < dayNumber - lastDayNumber - 1; i++) {
+            zeroTds.push(React.createElement('td', { key: uuidv4() }, '0'));
+         }
       }
+      lastDayNumber = dayNumber;
+
+      return (
+         <>
+            {[...zeroTds]}
+            <td key={uuidv4()}> {spentMinutes(day.Start, day.End)}</td>
+         </>
+      );
    });
 }
 
 function renderLastDay(days) {
    const lastDay = Number(days[days.length - 1].Date.split('-')[2]);
+   let zeroTds = [];
 
-   if (lastDay !== 31) {
-      return <td key={uuidv4()}>0</td>;
+   if (lastDay < 31) {
+      for (let i = 0; i < 31 - lastDay; i++) {
+         zeroTds.push(React.createElement('td', { key: uuidv4() }, '0'));
+      }
+
+      return [...zeroTds];
    }
 }
 
