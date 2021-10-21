@@ -9,7 +9,7 @@
 
  The calendar app, which shows users spent time every day and total time during the month
 
- ## Getting started
+ ## Installation instruction
     You must clone the repo:
      git clone https://github.com/rryaboshtan/ReactUsersSpentTimeCalendar.git
 
