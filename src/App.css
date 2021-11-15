@@ -31,7 +31,7 @@ body {
   cursor: pointer;
 }
 
-.content-table td:hover {
+.content-table td:not(:first-child):hover {
   outline: 6px solid #009879;
   -webkit-transform: scale(1.5);
       -ms-transform: scale(1.5);
