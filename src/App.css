@@ -2,6 +2,10 @@
   font-family: sans-serif;
 }
 
+body {
+  padding-top: 3rem;
+}
+
 .content-table {
   border-collapse: collapse;
   margin: 0 auto;
@@ -22,7 +26,7 @@
 
 .content-table th,
 .content-table td {
-  padding: 12px 15px;
+  padding: 10px 7px;
   text-align: center;
   cursor: pointer;
 }
